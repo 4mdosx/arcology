@@ -1,11 +1,16 @@
+'use client'
 import './desktop.css'
-import Widget from './widget'
+import DesktopApp from './app'
+import { useModal } from '@/hooks/useModal'
 
 export default function Desktop() {
-  // const
+  const modal = useModal()
+  function onClick() {
+    modal.open()
+  }
   return (
     <div className="desktop">
-      <Widget name="article" style={{ left: '10px', top: '60px' }} />
+      <DesktopApp name="find" style={{ left: '10px', top: '60px' }} href="/find" />
     </div>
   )
 }

@@ -1,21 +1,20 @@
 #app {
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgb(var(--background-end-rgb))
-  )
-  rgb(var(--background-start-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
   width: 100vw;
   max-width: 390px;
   height: 844px;
   margin: 0 auto;
 }
+
 #action-bar_wrap {
   position: fixed;
   max-width: 390px;
   bottom: 20px;
   width: 100%;
   padding: 0 20px;
+
   .action-bar {
     display: flex;
     justify-content: space-around;
@@ -24,12 +23,17 @@
     background-color: rgba(217, 217, 217, 0.5);
   }
 }
+
 .desktop-widget {
   position: relative;
   width: 100px;
+  display: flex;
+  flex-direction: column;
+
   .icon_wrap {
     margin-left: 20px;
   }
+
   .name {
     color: aliceblue;
     text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
@@ -39,24 +43,197 @@
     margin-top: .5em;
   }
 }
+
 .widget-icon {
   width: 60px;
 }
-.widget-icon.dragging {
+
+.dragging {
   cursor: move;
   filter: blur(10px);
 }
-.action, .widget-icon {
+
+.a-icon {
+  background-color: rgb(255, 253, 253);
   position: relative;
   cursor: pointer;
-  border: 2px solid #000 ;
+  border: 2px solid #000;
   width: 60px;
   height: 60px;
   border-radius: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .timer {
+    position: absolute;
+    width: 60px;
+    overflow: hidden;
+    bottom: 0px;
+    background-color: rgba(102, 101, 101, .8);
+    color: white;
+    border-radius: 16px;
+    text-align: center;
+  }
+
+  .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 24px;
+    height: 24px;
+    background-color: #f00;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  .sub svg {
+    width: 36px;
+  }
+
+  .floating-icon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: white;
+    border: 2px solid #ccc;
+    box-sizing: content-box;
+    border-radius: 50%;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
 }
-.action:hover, .widget-icon:hover{
-  background-color: rgba(0, 0, 0, 0.1);
+
+.a-icon:hover {
+  opacity: 0.8;
+}
+
+.a-icon.required-health {
+  border: 2px solid rgb(255, 51, 0);
+  box-shadow: 0 0 5px rgb(255, 51, 0);
+}
+
+.a-icon.required-thought {
+  border: 2px solid rgb(0, 76, 255);
+  box-shadow: 0 0 5px rgb(0, 76, 255);
+}
+
+.a-icon.required-passion {
+  border: 2px solid rgb(4, 208, 212);
+  box-shadow: 0 0 5px rgb(4, 208, 212);
+}
+
+/* modal && toast */
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  width: 300px;
+  margin: auto;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-footer {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+  .action-button {
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+}
+
+.modal-header.action-with-widget {
+  display: flex;
+  justify-content: start;
+  align-items: top;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding-bottom: .6rem;
+  border-bottom: 1px solid #ccc;
+
+  .title {
+    margin-left: 1rem;
+
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  .usage {
+    margin-top: .2rem;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: #666;
+
+    .number {
+      font-size: 1rem;
+      margin-left: 3px;
+      margin-right: 2rem;
+    }
+  }
+}
+
+.modal-header.loot {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding-bottom: .6rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.modal-body {
+  width: 100%;
+  text-align: left;
+}
+
+.toast {
+  position: fixed;
+  bottom: 220px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  z-index: 100;
 }

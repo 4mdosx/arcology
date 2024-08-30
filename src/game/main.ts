@@ -1,21 +1,23 @@
 import Character from './character'
+import World from './world'
+import OutPost from './outpost'
 
-const modules = [Character]
-class Game {
+const modules = [Character, World, OutPost]
+export class Game {
   data = {} as any
   modules = [] as Module[]
-  tickLength = 100
+  tickLength = 1000 // 每秒更新一次游戏状态
   stopTimer = 0
   saveFlag = 0
   constructor() {
     this.init()
-    console.log('Game is running')
+    console.log('Game is inited')
   }
 
   init () {
     this.load()
     // @ts-ignore
-    this.modules = modules.forEach(Module => new Module(this))
+    this.modules = modules.map(M => new M(this))
     if (!this.data.offlineProgress || !this.data.lastTick) this.data.lastTick = performance.now()
     this.start(this.data.lastTick)
   }
@@ -28,6 +30,7 @@ class Game {
     if (tFrame > nextTick) {
       const timeSinceTick = tFrame - this.data.lastTick
       numTicks = Math.floor(timeSinceTick / this.tickLength)
+      if (numTicks > 60) numTicks = 60
     }
 
     for (let i = 0; i < numTicks; i++) {
@@ -36,12 +39,17 @@ class Game {
     }
   }
 
+  stop () {
+    clearTimeout(this.stopTimer)
+  }
+
   tick () {
-    this.modules.forEach(module => module.tick())
+    this.modules.forEach(module => module.tick && module.tick())
     this.saveFlag++
-    if (this.saveFlag >= 600) {
+    if (this.saveFlag >= 120) {
       this.save()
       this.saveFlag = 0
+      console.log('Game is saved')
     }
   }
 
