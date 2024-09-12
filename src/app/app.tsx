@@ -1,6 +1,5 @@
 'use client'
 import './app.css'
-import ActionBar from '@/components/action_bar'
 import Modal from '@/components/modal'
 import Toast from '@/components/toast'
 import { useGame } from '@/hooks/useGame'
@@ -22,7 +21,6 @@ export default function App({
   return (
     <div id="app">
       {children}
-      <ActionBar />
       <Modal />
       <Toast />
     </div>

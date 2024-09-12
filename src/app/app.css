@@ -1,10 +1,7 @@
 #app {
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background-color: var(--background-color);
   width: 100vw;
-  max-width: 390px;
-  height: 844px;
+  height: 100vh;
   margin: 0 auto;
 }
 

@@ -11,8 +11,7 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-color: #eee
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,6 +22,35 @@
   }
 }
 
+html {
+  background-color: #fff;
+  overflow: hidden;
+}
+
 body {
+  background-color: #fff;
   color: rgb(var(--foreground-rgb));
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* icons */
+@font-face {
+  font-family: 'Material Symbols';
+  font-style: normal;
+  src: url('/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].woff2') format('woff');
+}
+
+.material_symbols {
+  font-family: 'Material Symbols';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
 }

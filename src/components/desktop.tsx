@@ -1,5 +1,4 @@
 'use client'
-import './desktop.css'
 import DesktopApp from './app'
 import { useModal } from '@/hooks/useModal'
 
@@ -10,7 +9,7 @@ export default function Desktop() {
   }
   return (
     <div className="desktop">
-      <DesktopApp name="find" style={{ left: '10px', top: '60px' }} href="/find" />
+      <DesktopApp name="find" style={{ left: '10px', top: '20px' }} href="/find" />
     </div>
   )
 }

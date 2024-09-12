@@ -17,6 +17,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-cn">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="application-name" content="My Awesome Web App"></meta>
+        <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
+      </head>
       <body className={inter.className}>
         <App>{children}</App>
       </body>
