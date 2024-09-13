@@ -19,3 +19,13 @@
   font-size: 32px;
 }
 
+.app_wrapper .title {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+}
+

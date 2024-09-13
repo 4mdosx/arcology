@@ -1,13 +1,15 @@
 'use client'
 import { useGame } from '@/hooks/useGame'
 import { useToast } from '@/hooks/useToast'
-import { useState } from 'react'
-import Link from 'next/link'
+import { useState, useRef } from 'react'
+import { Header } from '@/components/ui/header'
+import { Button } from '@/components/ui/button'
 
 export default function Page() {
   const game = useGame()
   const toast = useToast()
   const [logs, setLogs] = useState<string[]>([])
+  const ref = useRef<HTMLDivElement>(null)
 
   function gather() {
     const result = game.character.gather()
@@ -16,31 +18,32 @@ export default function Page() {
       return
     }
     toast.show(
-      `Gathered Fuel: ${result.fuel} Raw Material: ${result.raw_material}`
+      `Gathered Raw Material: ${result.raw_material}`
     )
     setLogs([
       ...logs,
-      `Gathered Fuel: ${result.fuel} Raw Material: ${result.raw_material}`,
+      `Gathered Raw Material: ${result.raw_material}`,
     ])
+    ref.current?.scrollTo({
+      top: ref.current.scrollHeight,
+      behavior: 'smooth'
+    })
   }
 
   return (
-    <main className="page p-4">
-      <h1>Find</h1>
-      <p>Find something here.</p>
-      <ul>
-        {logs.map((log, index) => (
-          <li key={index}>{log}</li>
-        ))}
-      </ul>
-      <button onClick={gather} className="underline mr-2">
+    <main>
+      <Header title="Find" />
+      <div className="page flex flex-col justify-center p-4 pt-10 pb-40" ref={ref}>
+        <p>Find something here.</p>
+        <ul>
+          {logs.map((log, index) => (
+            <li key={index}>{log}</li>
+          ))}
+        </ul>
+      </div>
+      <Button onClick={gather} className="underline fixed bottom-10 w-80 left-1/2 -translate-x-1/2">
         Gather
-      </button>
-      {logs.length > 0 && (
-        <Link href="/outpost">
-          <button className="underline">Check Inventory</button>
-        </Link>
-      )}
+      </Button>
     </main>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
-import DesktopApp from './app'
 import { useModal } from '@/hooks/useModal'
+import Stock from './apps/stock/main'
 
 export default function Desktop() {
   const modal = useModal()
@@ -9,7 +9,9 @@ export default function Desktop() {
   }
   return (
     <div className="desktop">
-      <DesktopApp name="find" style={{ left: '10px', top: '20px' }} href="/find" />
+      <div style={{ left: '10px', top: '10px', position: 'relative' }}>
+        <Stock />
+      </div>
     </div>
   )
 }

@@ -1,14 +1,5 @@
 const dataSchema = {
   character: {
-    status: {
-      endurance: 5
-    },
-    max: {
-      endurance: 5
-    },
-    recover: {
-      endurance: 1
-    },
     attributes: {
 
     }
@@ -37,14 +28,11 @@ export default class Character {
         message: 'Not enough endurance'
       }
     }
-    const fuel = Math.floor(Math.random() * 5)
-    const raw_material = Math.floor(Math.random() * 5)
-    this.game.outpost.store('fuel', fuel)
+    const raw_material = Math.ceil(Math.random() * 5)
     this.game.outpost.store('raw_material', raw_material)
 
     return {
       success: true,
-      fuel,
       raw_material
     }
   }
