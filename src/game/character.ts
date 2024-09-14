@@ -22,12 +22,6 @@ export default class Character {
   }
 
   gather () {
-    if (this.game.data.character.status.endurance <= 0) {
-      return {
-        success: false,
-        message: 'Not enough endurance'
-      }
-    }
     const raw_material = Math.ceil(Math.random() * 5)
     this.game.outpost.store('raw_material', raw_material)
 
@@ -38,15 +32,5 @@ export default class Character {
   }
 
   tick () {
-    const character = this.game.data.character
-    const recover = character.recover
-    for (const key in recover) {
-      if (recover.hasOwnProperty(key)) {
-        character.status[key] += recover[key]
-        if (character.status[key] > character.max[key]) {
-          character.status[key] = character.max[key]
-        }
-      }
-    }
   }
 }

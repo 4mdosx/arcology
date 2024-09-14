@@ -33,7 +33,7 @@ export default function Page() {
   return (
     <main>
       <Header title="Find" />
-      <div className="page flex flex-col justify-center p-4 pt-10 pb-40" ref={ref}>
+      <div className="page flex flex-col justify-top p-4 pt-10 pb-40" ref={ref}>
         <p>Find something here.</p>
         <ul>
           {logs.map((log, index) => (

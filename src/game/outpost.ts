@@ -1,13 +1,13 @@
 function makeEmptyOutPost () {
   return {
-    probe: 1,
+    poi: 1,
     buildings: [],
     power: 10,
     stock: {
       raw_material: 0,
     },
     max: {
-      power: 10,
+      power: 100,
       raw_material: 500
     }
   }
@@ -20,17 +20,21 @@ export default class OutPost {
     game.outpost = this
 
     // game.data.world
-    if (game.data.outposts === undefined) {
+    if (game.data.outpost === undefined) {
       game.data.outpost = makeEmptyOutPost()
     }
   }
 
   store (resource: string, amount: number) {
     const outPost = this.game.data.outpost
-    if (outPost.resources[resource] + amount > outPost.max[resource]) {
-      outPost.resources[resource] = outPost.max[resource]
+    if (outPost.stock[resource] + amount > outPost.max[resource]) {
+      outPost.stock[resource] = outPost.max[resource]
     } else {
-      outPost.resources[resource] += amount
+      outPost.stock[resource] += amount
     }
+  }
+
+  changePower () {
+    this.game.data.outpost.power = this.game.data.outpost.max.power
   }
 }
