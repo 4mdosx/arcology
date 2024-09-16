@@ -11,7 +11,7 @@ import MaterialSymbols from '@/components/material_symbols'
 export default function Page() {
   const game = useGame()
   const toast = useToast()
-  const [power, setPower] = useState(0)
+  const [power, setPower] = useState(game.data.outpost.power)
   const maxPower = game.data.outpost.max.power
   const length = Math.floor(power / maxPower * 19)
   function changer () {

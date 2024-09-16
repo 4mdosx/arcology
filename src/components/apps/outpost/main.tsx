@@ -12,7 +12,7 @@ interface AppProps {
 
 export default function Outpost({ style }: AppProps) {
   const game = useGame()
-  const [power, setPower] = useState(0)
+  const [power, setPower] = useState(game.data.outpost.power)
   const maxPower = game.data.outpost.max.power
   const length = Math.floor(power / maxPower * 19)
   useEffect(() => {

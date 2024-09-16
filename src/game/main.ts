@@ -1,8 +1,10 @@
 import Character from './character'
 import World from './world'
 import OutPost from './outpost'
+import Mission from './mission'
+import Meta from './meta'
 
-const modules = [Character, World, OutPost]
+const modules = [Character, World, OutPost, Mission, Meta]
 export class Game {
   data = {} as any
   modules = [] as Module[]
