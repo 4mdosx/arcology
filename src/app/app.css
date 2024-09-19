@@ -59,6 +59,29 @@ body {
   }
 }
 
+.desktop {
+  .next {
+    position: fixed;
+    bottom: 140px;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+  .next.disabled {
+    border-color: #ccc;
+    color: #ccc;
+  }
+}
+
 .desktop-widget {
   position: relative;
   width: 100px;

@@ -11,6 +11,7 @@ const symbolMap = {
   home: '&#xE8B6;',
   explore: '&#xe87a;',
   star: '&#xe838;',
+  search: '&#xe8b6;'
 }
 
 export default function MaterialSymbols(props: MaterialSymbolsProps) {

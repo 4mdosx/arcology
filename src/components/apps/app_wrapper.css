@@ -32,8 +32,8 @@
 
 .app_wrapper .badge {
   position: absolute;
-  bottom:  -0.5rem;
-  right: -0.5rem;
+  bottom:  -0.3rem;
+  right: -0.3rem;
   background-color: hsl(223, 77%, 73%);
   color: rgb(250, 250, 250);
   font-size: 0.6rem;
