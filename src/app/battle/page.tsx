@@ -2,12 +2,12 @@
 import { useEffect, useRef, useCallback, useMemo } from 'react'
 import { useBattle } from '@/hooks/useBattle'
 import { usePointer } from '@/hooks/usePointer'
+import Scene from '@/components/scene'
 import { Bezier } from 'bezier-js'
 import clsx from 'clsx'
 import './battle.css'
 
 function Card({ card, style }: { card: any, style?: any }) {
-
   return (
     <div className='card' style={style}>
       <p>{card.name}</p>
@@ -155,6 +155,7 @@ export default function Page() {
 
   return (
     <main className='battle page' onClick={draw}>
+      <Scene />
       <Panel />
       <CardsInHand />
       <CardDragging />

@@ -26,7 +26,7 @@ export const dataBridge = {
 }
 
 export const bridgeWrapper = (f, moduleName)=> (set, get, store) => {
-  Object.defineProperty(game, moduleName, {
+  Object.defineProperty(dataBridge, moduleName, {
     get () {
       return store.getState()
     }
