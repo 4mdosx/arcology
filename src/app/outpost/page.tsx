@@ -1,5 +1,4 @@
 'use client'
-import { useGame } from '@/hooks/useGame'
 import { useToast } from '@/hooks/useToast'
 import { useState, useEffect } from 'react'
 import { Header } from '@/components/ui/header'
@@ -9,28 +8,14 @@ import { Card, CardContent } from '@/components/ui/card'
 import MaterialSymbols from '@/components/material_symbols'
 
 export default function Page() {
-  const game = useGame()
   const toast = useToast()
-  const [power, setPower] = useState(game.data.outpost.power)
-  const maxPower = game.data.outpost.max.power
+  const [power, setPower] = useState(0)
+  const maxPower = 100
   const length = Math.floor(power / maxPower * 19)
   function changer () {
-    game.outpost.changePower()
-    setPower(game.data.outpost.power)
     toast.show('Fully charged to maximum capacity.')
   }
 
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const power = game.data.outpost.power
-      setPower(power)
-    }, 1000)
-
-    return () => {
-        clearInterval(timer)
-    }
-  }, [game])
 
   return (
     <main>

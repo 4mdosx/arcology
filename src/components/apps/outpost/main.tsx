@@ -1,5 +1,4 @@
 'use client'
-import { useGame } from '@/hooks/useGame'
 import AppWrapper from '../app_wrapper'
 import MaterialSymbols from '@/components/material_symbols'
 import Link from 'next/link'
@@ -11,20 +10,9 @@ interface AppProps {
 }
 
 export default function Outpost({ style }: AppProps) {
-  const game = useGame()
-  const [power, setPower] = useState(game.data.outpost.power)
-  const maxPower = game.data.outpost.max.power
+  const [power, setPower] = useState(10)
+  const maxPower = 100
   const length = Math.floor(power / maxPower * 19)
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const power = game.data.outpost.power
-      setPower(power)
-    }, 1000)
-
-    return () => {
-        clearInterval(timer)
-    }
-  }, [game])
 
   return (
     <Link href="/outpost" style={style}>

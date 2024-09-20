@@ -1,12 +1,10 @@
 import AppWrapper from '../app_wrapper'
 import MaterialSymbols from '@/components/material_symbols'
 import Link from 'next/link'
-import { useGame } from '@/hooks/useGame'
 import { useToast } from '@/hooks/useToast'
 
 export default function Deck() {
-  const game = useGame()
-  const hasDeckBuilding = game.data.outpost.buildings.some((building: any) => building.type === 'deck')
+  const hasDeckBuilding = false
   const toast = useToast()
   function info () {
     toast.show('Deck Building...')

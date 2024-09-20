@@ -1,12 +1,8 @@
-import Character from './character'
-import World from './world'
-import OutPost from './outpost'
-import Mission from './mission'
-import Meta from './meta'
-
-const modules = [Character, World, OutPost, Mission, Meta]
+import { dataBridge } from "./bridge"
+const modules: any[] = []
 export class Game {
   data = {} as any
+  bridge = {} as any
   modules = [] as Module[]
   tickLength = 1000 // 每秒更新一次游戏状态
   stopTimer = 0
@@ -17,11 +13,15 @@ export class Game {
   }
 
   init () {
-    this.load()
+    // @ts-ignore
+    this.bridge = dataBridge
     // @ts-ignore
     this.modules = modules.map(M => new M(this))
     if (!this.data.offlineProgress || !this.data.lastTick) this.data.lastTick = performance.now()
     this.start(this.data.lastTick)
+    // @ts-ignore
+    window.game = this
+    console.log('Game is started')
   }
 
   start (tFrame: number) {

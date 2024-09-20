@@ -1,5 +1,4 @@
 'use client'
-import { useGame } from '@/hooks/useGame'
 import { useToast } from '@/hooks/useToast'
 import { useState, useEffect } from 'react'
 import { Header } from '@/components/ui/header'
@@ -61,25 +60,20 @@ function IssueItem({ issue, acceptIssue }: any) {
 }
 
 export default function Page() {
-  const game = useGame()
   const [currentMission, setCurrentMission] = useState<any | null>(
-    game.data.mission.current
   )
-  const [list, setList] = useState<any[]>([...game.data.mission.issues])
+  const [list, setList] = useState<any[]>([])
 
   // if (!currentMission && list.length === 0) {
   //   setList(game.mission.generate())
   // }
   useEffect(() => {
     if (!currentMission && list.length === 0) {
-      setList(game.mission.generate())
     }
   }, [])
 
   function acceptIssue(issue: any) {
-    game.mission.accept(issue)
-    setCurrentMission(game.data.mission.current)
-    setList(game.data.mission.issues)
+
   }
 
   return (
