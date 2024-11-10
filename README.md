@@ -19,3 +19,12 @@ bun dev
 icons, [Material Icons](https://fonts.google.com/icons?selected=Material+Symbols+Outlined)
 [corner-smoothing](https://github.com/sanalabs/corner-smoothing)
 
+
+## Database
+
+[Drizzle](https://orm.drizzle.team/docs/overview)
+
+sync schema
+```bash
+npx drizzle-kit sync
+```
