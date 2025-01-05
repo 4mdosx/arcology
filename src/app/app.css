@@ -1,7 +1,12 @@
 body {
-  background-color: #fff;
+  background-color: #000;
   overflow: hidden;
   height: 100vh;
+  width: 100vw;
+}
+body, html {
+  padding: 0;
+  margin: 0;
 }
 
 /* icons */
@@ -41,7 +46,6 @@ body {
   margin: 0 auto;
   overflow: hidden;
 }
-
 
 #action-bar_wrap {
   position: fixed;
