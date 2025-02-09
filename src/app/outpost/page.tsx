@@ -1,5 +1,4 @@
 'use client'
-import { useToast } from '@/hooks/useToast'
 import { useState, useEffect } from 'react'
 import { Header } from '@/components/ui/header'
 import { Button } from '@/components/ui/button'
@@ -8,12 +7,11 @@ import { Card, CardContent } from '@/components/ui/card'
 import MaterialSymbols from '@/components/material_symbols'
 
 export default function Page() {
-  const toast = useToast()
   const [power, setPower] = useState(0)
   const maxPower = 100
   const length = Math.floor(power / maxPower * 19)
   function changer () {
-    toast.show('Fully charged to maximum capacity.')
+    // toast.show('Fully charged to maximum capacity.')
   }
 
 

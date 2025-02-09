@@ -5,7 +5,7 @@ export type SessionPayload = {
   expiresAt: Date
 }
 
-export const SignupFormSchema = z.object({
+export const SignupSchema = z.object({
   name: z
     .string()
     .min(2, { message: 'Name must be at least 2 characters long.' })
@@ -19,18 +19,11 @@ export const SignupFormSchema = z.object({
     .trim(),
 })
 
-export const LoginFormSchema = z.object({
+export type SignupData = z.infer<typeof SignupSchema>
+
+export const LoginSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email.' }).trim(),
   password: z.string().trim(),
 })
 
-export type FormState =
-  | {
-      errors?: {
-        name?: string[]
-        email?: string[]
-        password?: string[]
-      }
-      message?: string
-    }
-  | undefined
+export type LoginData = z.infer<typeof LoginSchema>

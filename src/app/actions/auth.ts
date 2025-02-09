@@ -1,19 +1,15 @@
 'use server'
 import 'server-only'
-import { SignupFormSchema, LoginFormSchema, FormState } from '@/lib/definitions'
-import { deleteSession, createSession } from '@/lib/session'
+import { SignupSchema, SignupData, LoginSchema, LoginData } from '@/modules/auth/definitions'
+import { deleteSession, createSession } from '@/modules/auth/service'
 import { redirect } from 'next/navigation'
-import { createUser, createUserDto } from './user'
-import { getUserByEmail } from '@/lib/dal'
+import { createUser, getUserByEmail } from '@/modules/user/service'
 import * as bcrypt from 'bcrypt'
+import { createUserDto } from '@/modules/user/definitions'
 
-export async function signup(state: FormState, formData: FormData) {
+export async function signup(formData: SignupData) {
   // Validate form fields
-  const validatedFields = SignupFormSchema.safeParse({
-    name: formData.get('name'),
-    email: formData.get('email'),
-    password: formData.get('password'),
-  })
+  const validatedFields = SignupSchema.safeParse(formData)
 
   // If any form fields are invalid, return early
   if (!validatedFields.success) {
@@ -28,11 +24,8 @@ export async function signup(state: FormState, formData: FormData) {
   redirect('/dashboard')
 }
 
-export async function login(state: FormState, formData: FormData) {
-  const validatedFields = LoginFormSchema.safeParse({
-    email: formData.get('email'),
-    password: formData.get('password'),
-  })
+export async function login(formData: LoginData) {
+  const validatedFields = LoginSchema.safeParse(formData)
 
   if (!validatedFields.success) {
     return {
@@ -58,5 +51,5 @@ export async function login(state: FormState, formData: FormData) {
 
 export async function logout() {
   deleteSession()
-  redirect('/signup')
+  redirect('/')
 }
