@@ -82,3 +82,9 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  background-color: #365f5c;
+}

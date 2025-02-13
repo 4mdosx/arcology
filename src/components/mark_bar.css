@@ -1,0 +1,22 @@
+#mark-bar_wrap {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  padding: 0 16px;
+
+  .mark-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 64px;
+    background-color: rgba(217, 217, 217, 0.4);
+    backdrop-filter: blur(4px);
+  }
+
+  .cell {
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+}

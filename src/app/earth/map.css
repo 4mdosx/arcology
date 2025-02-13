@@ -1,0 +1,13 @@
+
+.map-container {
+  width: 100vw;
+  height: 100vh;
+  background-color:  #bbd2f0;
+  position: relative;
+}
+.ap {
+  background-color: #63917f;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}

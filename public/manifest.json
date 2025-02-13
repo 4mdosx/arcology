@@ -1,7 +1,7 @@
 {
-  "name": "My Awesome Web App",
-  "short_name": "Awesome App",
-  "start_url": "/",
+  "name": "Cat Arcology Game",
+  "short_name": "CatArco",
+  "start_url": "/dashboard",
   "display": "standalone",
   "background_color": "#fff",
   "theme_color": "#3c3c3c",
