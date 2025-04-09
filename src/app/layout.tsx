@@ -21,6 +21,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="application-name" content="Arcology"></meta>
+        <meta name="mobile-web-app-capable" content="yes"></meta>
         <meta name="apple-mobile-web-app-capable" content="yes"></meta>
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
       </head>

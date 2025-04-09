@@ -26,5 +26,5 @@ icons, [Material Icons](https://fonts.google.com/icons?selected=Material+Symbols
 
 sync schema
 ```bash
-npx drizzle-kit sync
+npx drizzle-kit push 
 ```
