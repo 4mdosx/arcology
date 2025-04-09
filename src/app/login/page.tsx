@@ -1,7 +1,6 @@
 'use client'
-import { z } from 'zod'
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, FieldError } from 'react-hook-form'
 import Link from 'next/link'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
@@ -29,6 +28,7 @@ export default function LoginPage() {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isValid, isDirty },
   } = useForm<LoginData>({
     resolver: zodResolver(loginSchema),
@@ -37,7 +37,15 @@ export default function LoginPage() {
     setIsLoading(true)
 
     try {
-      await login(data)
+      const res = await login(data)
+      if (res.errors) {
+
+        console.log('errors', errors)
+        for (const key in res.errors) {
+          // @ts-ignore
+          setError(key, { message: res.errors[key][0], type: 'manual' } as FieldError)
+        }
+      }
     } catch (error) {
       toast({
         title: 'Something went wrong',

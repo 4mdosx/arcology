@@ -86,7 +86,9 @@ export default function DraggableContainer({
           height: '100vh',
         }}
       >
-        {React.cloneElement(children, { setPosition, setBound })}
+        {React.isValidElement(children)
+          ? React.cloneElement(children, { setPosition, setBound })
+          : children}
       </div>
     </div>
   )
