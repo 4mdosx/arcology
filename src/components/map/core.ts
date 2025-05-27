@@ -1,5 +1,6 @@
 import * as maptilersdk from '@maptiler/sdk'
 import { getMaptilerKey } from '@/app/actions/map'
+import { registerGridLayer } from './gridLayer'
 
 interface Position {
   center: [number, number]
@@ -21,12 +22,16 @@ export async function createMap(initialPosition: Position) {
     canvasContextAttributes: { antialias: true },
   })
 
-  map.on('style.load', async function () {
+  map.on('load', async function () {
     // register costom layer
-
+    registerGridLayer(map)
     // register click event
     map.on('click', function (e) {
       console.log(e)
+      const features = map.queryRenderedFeatures(e.point, {
+        layers: ['3D Buildings'],
+      })
+      console.log(features)
     })
   })
 
