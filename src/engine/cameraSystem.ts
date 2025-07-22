@@ -1,19 +1,20 @@
 import * as THREE from 'three'
-import { VoxRoomScene } from './gameScene'
+import { GameScene } from './gameScene'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { Entity } from './scene'
 
 interface CameraPayload {
   control: boolean
+  position: { x: number, y: number, z: number }
 }
 export class CameraSystem {
   tag: 'camera' = 'camera' as const
-
   controls: OrbitControls | null = null
-  scene: VoxRoomScene | null = null
+  scene: GameScene | null = null
 
-  update(entities: Entity[], scene: VoxRoomScene) {
+  update(entities: Entity[], scene: GameScene) {
     const camera = entities[0].camera as CameraPayload
+    scene.camera?.position.set(camera.position.x, camera.position.y, camera.position.z)
     if (camera.control) {
       this.controls = new OrbitControls(scene.camera!, scene.renderer!.domElement)
       this.controls.enableDamping = true
@@ -25,7 +26,7 @@ export class CameraSystem {
     }
   }
 
-  init (scene: VoxRoomScene) {
+  init (scene: GameScene) {
     this.scene = scene
     const width = scene.store.get('width') as number
     const height = scene.store.get('height') as number
@@ -36,15 +37,8 @@ export class CameraSystem {
       0.1, // near
       1000 // far
     )
-    camera.position.set(0, -5, 6)
+    camera.position.set(0, 0, 0)
     camera.lookAt(0, 0, 0)
     scene.camera = camera
-    scene.addEntity({
-      group: 'camera',
-      name: 'camera',
-      components: [
-        { tag: 'camera', position: { x: 0, y: 0, z: 0 }, control: true }
-      ]
-    })
   }
 }
