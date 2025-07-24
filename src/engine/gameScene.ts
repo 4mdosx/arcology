@@ -4,6 +4,7 @@ import { GameSceneOptions, Renderer, Scene, System } from './scene'
 import ThreeRender from './3drender'
 import { CameraSystem } from './cameraSystem'
 import { LightingSystem } from './lightingSystem'
+import { SkySystem } from './skySystem'
 
 export class GameScene extends Scene {
   public camera: THREE.PerspectiveCamera | null = null
@@ -17,6 +18,7 @@ export class GameScene extends Scene {
 
     this.addSystem(new CameraSystem() as unknown as System)
     this.addSystem(new LightingSystem() as unknown as System)
+    this.addSystem(new SkySystem() as unknown as System)
     this.addRenderer(new ThreeRender() as unknown as Renderer)
     this.init()
 
@@ -49,6 +51,14 @@ export class GameScene extends Scene {
       name: 'pointLight',
       components: [
         { tag: 'lighting', type: 'point', attributes: { color: 0xffeeaa, intensity: 0.5 }, position: { x: -5, y: 2, z: 5 } }
+      ]
+    })
+
+    this.addEntity({
+      group: 'sky',
+      name: 'sky',
+      components: [
+        { tag: 'sky', type: 'base' }
       ]
     })
   }
