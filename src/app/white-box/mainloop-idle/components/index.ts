@@ -1,0 +1,5 @@
+export { GameStats } from './GameStats'
+export { ClickArea } from './ClickArea'
+export { UpgradeShop } from './UpgradeShop'
+export { GameDescription } from './GameDescription'
+export { GameController } from './GameController'

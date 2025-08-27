@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import App from './app'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Cat Arcology Game',
-  description: 'Cat Arcology Game',
+  title: 'Arcology Games',
+  description: 'Arcology Games',
 }
 
 export default function RootLayout({
@@ -26,7 +25,7 @@ export default function RootLayout({
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
       </head>
       <body className={inter.className}>
-        <App>{children}</App>
+        {children}
       </body>
     </html>
   )
